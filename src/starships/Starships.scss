@@ -1,0 +1,46 @@
+@use "../assets/styles/space";
+
+.Starships {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    background-color: var(--dark-grey);
+    border-radius: 1.5rem;
+    padding: space.of(3);
+
+    + .card {
+      margin-top: space.of(4);
+    }
+  }
+
+  .name {
+    margin-bottom: space.of(2);
+  }
+
+  .manufacturer{
+    margin-bottom: space.of(3);
+  }
+
+  .stars {
+    margin-bottom: space.of(1);
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .specs {
+    margin-right: space.of(3)
+  }
+
+  .picture {
+    min-width: 9.5rem;
+    background: url(../assets/images/starship.jpg) no-repeat 0 0;
+    background-size: auto 100%;
+    border-radius: .75rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

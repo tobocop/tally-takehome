@@ -1,0 +1,17 @@
+@use "../assets/styles/space";
+
+.GetStarships {
+
+  .wrap {
+    margin: 0 space.of(4);
+  }
+
+  .title {
+    margin-bottom: space.of(5);
+  }
+}
+
+// TODO: probably pull this into its own component
+header {
+  margin-bottom: space.of(15);
+}

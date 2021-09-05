@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { PaginationButton } from "../pagination/PaginationButton";
 import { StarshipsResponse } from "./Starship";
 import { Starships } from "./Starships";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Routes } from "../Routes";
+import "./GetStarships.scss";
 
 export const GetStarships = () => {
   const [apiUrl, setApiUrl] = useState("https://swapi.dev/api/starships")
@@ -24,10 +25,15 @@ export const GetStarships = () => {
     return <div>Loading...</div>
   }
 
-  return <div>
-    <Link to={Routes.Favorites}>Favorites</Link>
-    <Starships ships={starshipsResponse.results} showNotes={false}/>
-    <PaginationButton url={starshipsResponse.previous} onClick={setApiUrl} text="previous" />
-    <PaginationButton url={starshipsResponse.next} onClick={setApiUrl} text="next" />
+  return <div className="GetStarships">
+    <header>
+      <Link to={Routes.Favorites}>Favorites</Link>
+    </header>
+    <div className="wrap">
+      <h1 className="title">Starship List</h1>
+      <Starships ships={starshipsResponse.results} showNotes={false} />
+      <PaginationButton url={starshipsResponse.previous} onClick={setApiUrl} text="previous" />
+      <PaginationButton url={starshipsResponse.next} onClick={setApiUrl} text="next" />
+    </div>
   </div>
 }

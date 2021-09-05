@@ -1,0 +1,3 @@
+@function of($coefficient: 1) {
+  @return $coefficient * .8rem;
+}
