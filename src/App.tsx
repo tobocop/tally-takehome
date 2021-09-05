@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
-import { Starships } from "./starships/Starships";
+import { GetStarships } from "./starships/GetStarships";
 
 function App() {
   return (
     <BrowserRouter>
-      <Route path="/" component={Starships} />
+      <Route path="/" component={GetStarships} />
     </BrowserRouter>
   );
 }
