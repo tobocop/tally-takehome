@@ -25,7 +25,7 @@ export const GetStarships = () => {
 
   return <div>
     <Link to="/favorites">Favorites</Link>
-    <Starships ships={starshipsResponse.results} />
+    <Starships ships={starshipsResponse.results} showNotes={false}/>
     <PaginationButton url={starshipsResponse.previous} onClick={setApiUrl} text="previous" />
     <PaginationButton url={starshipsResponse.next} onClick={setApiUrl} text="next" />
   </div>

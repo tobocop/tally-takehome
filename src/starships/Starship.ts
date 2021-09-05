@@ -4,6 +4,7 @@ export interface Starship {
   manufacturer: string
   hyperdrive_rating: string
   passengers: string
+  notes: string
 }
 
 export interface StarshipsResponse {

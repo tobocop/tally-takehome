@@ -5,15 +5,17 @@ import { ChangeEvent } from "react";
 
 interface StarshipsProps {
   ships: Starship[]
+  showNotes: boolean
 }
 
-export const Starships = ({ships}: StarshipsProps) => {
+export const Starships = ({ships, showNotes}: StarshipsProps) => {
   const [favorites, setFavorites] = useRecoilState(favoritesState)
 
   const updateFavorites = (ship: Starship, checked: boolean) => {
-    setFavorites((oldFavorites) =>
-      checked ? [...oldFavorites, ship]
-        : oldFavorites.filter(s => s !== ship)
+    setFavorites((oldFavorites) => {
+        const filtered = oldFavorites.filter(s => s.url !== ship.url);
+        return checked ? [...filtered, ship] : filtered
+      }
     )
   }
 
@@ -29,6 +31,16 @@ export const Starships = ({ships}: StarshipsProps) => {
         {ship.manufacturer} <br />
         {ship.hyperdrive_rating} <br />
         {ship.passengers} <br />
+        {
+          showNotes &&
+          <textarea
+              value={ship.notes}
+              onChange={(e) => updateFavorites({
+                ...ship,
+                notes: e.target.value
+              }, true)}
+          />
+        }
       </div>
     )}
   </div>

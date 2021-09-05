@@ -6,8 +6,7 @@ interface PaginationButtonProps {
   onClick: (url: string) => void
 }
 
-export const PaginationButton = (props: PaginationButtonProps) => {
-  const {url, text, onClick} = props
+export const PaginationButton = ({url, text, onClick}: PaginationButtonProps) => {
   if(url === null) {
     return <span>{text}</span>
   }
