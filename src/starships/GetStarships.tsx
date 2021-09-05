@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { PaginationButton } from "../pagination/PaginationButton";
 import { StarshipsResponse } from "./Starship";
 import { Starships } from "./Starships";
+import {Link} from "react-router-dom"
 
 export const GetStarships = () => {
   const [apiUrl, setApiUrl] = useState("https://swapi.dev/api/starships")
@@ -23,6 +24,7 @@ export const GetStarships = () => {
   }
 
   return <div>
+    <Link to="/favorites">Favorites</Link>
     <Starships ships={starshipsResponse.results} />
     <PaginationButton url={starshipsResponse.previous} onClick={setApiUrl} text="previous" />
     <PaginationButton url={starshipsResponse.next} onClick={setApiUrl} text="next" />
