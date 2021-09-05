@@ -39,5 +39,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-router": "^5.1.16",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/recoil": "^0.0.9",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
+    "recoil": "^0.4.1"
   }
 }
