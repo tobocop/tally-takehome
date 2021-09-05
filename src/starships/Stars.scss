@@ -1,0 +1,7 @@
+@use "../assets/styles/space";
+
+.Stars {
+  img + img {
+    margin-left: space.of(1);
+  }
+}
