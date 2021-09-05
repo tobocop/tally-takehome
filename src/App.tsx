@@ -1,8 +1,12 @@
 import React from 'react';
+import { BrowserRouter, Route } from "react-router-dom";
+import { Starships } from "./starships/Starships";
 
 function App() {
   return (
-    <div>Hello world</div>
+    <BrowserRouter>
+      <Route path="/" component={Starships} />
+    </BrowserRouter>
   );
 }
 
