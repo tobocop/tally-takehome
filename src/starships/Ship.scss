@@ -1,0 +1,93 @@
+@use "../assets/styles/space";
+@use "../assets/styles/breakpoints";
+
+.Ship {
+  &.card {
+    background-color: var(--dark-grey);
+    border-radius: 1.5rem;
+    padding: space.of(3);
+    flex: 1;
+    margin-top: space.of(4);
+
+    &:first-child {
+      margin-top: unset;
+    }
+
+    @include breakpoints.tablet {
+      margin-top: unset;
+      &:first-child {
+        margin-right: space.of(4);
+      }
+    }
+  }
+
+  @include breakpoints.tablet {
+    .half .card {
+      margin-right: space.of(2);
+    }
+  }
+
+  .name {
+    margin-bottom: space.of(2);
+  }
+
+  .manufacturer {
+    margin-bottom: space.of(3);
+  }
+
+  .stars {
+    margin-bottom: space.of(1);
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .specs {
+    margin-right: space.of(3)
+  }
+
+  .picture {
+    min-width: 9.5rem;
+    background: url(../assets/images/starship.jpg) no-repeat 0 0;
+    background-size: auto 100%;
+    border-radius: .75rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: space.of(.5)
+  }
+
+
+  // TODO: Pull into its own component
+  .customCheckbox {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      position: absolute;
+      width: 4.4rem;
+      height: 4.4rem;
+      cursor: pointer;
+      opacity: 0.00001;
+    }
+
+    .heart {
+      width: 4.4rem;
+      height: 4.4rem;
+      border-radius: 4.4rem;
+      background: var(--dark-grey) url(../assets/images/empty_heart.svg) no-repeat 50% 50%;
+    }
+
+    input[type="checkbox"]:checked + .heart {
+      background-image: url(../assets/images/full_heart.svg);
+    }
+
+    input[type="checkbox"]:focus + .heart {
+      outline: 2px dotted var(--white);
+      outline-offset: .2rem;
+    }
+  }
+}

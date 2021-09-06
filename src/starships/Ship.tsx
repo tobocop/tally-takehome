@@ -1,6 +1,7 @@
 import { Stars } from "./Stars";
 import { ChangeEvent } from "react";
 import { Starship } from "./Starship";
+import "./Ship.scss";
 
 interface StarshipProps {
   ship: Starship
@@ -10,7 +11,7 @@ interface StarshipProps {
 }
 
 export const Ship = ({ship, favorite, updateFavorites, showNotes}: StarshipProps) =>
-  <div key={ship.url} className="card">
+  <div key={ship.url} className="Ship card">
     <div className="details">
       <div className="specs">
         <h2 className="name">{ship.name}</h2>
