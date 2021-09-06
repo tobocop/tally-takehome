@@ -4,6 +4,8 @@
 .Header {
   display: flex;
   align-items: center;
+  margin-bottom: space.of(15);
+
   .logoWrap {
     flex: 1;
     margin-left: space.of(-4);

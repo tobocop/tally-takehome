@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { favoritesState } from "./favoritesState";
 import { Starships } from "../Starships";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Routes } from "../../Routes";
 import { Header } from "../../Header";
 import "./FavoriteStarships.scss"
@@ -13,6 +13,10 @@ export const FavoriteStarships = () => {
       <Link to={Routes.Starships}>Starships</Link>
     </Header>
     <h1 className="title">Favorites</h1>
-    <Starships ships={favorites} showNotes />
+    {
+      favorites.length > 0
+        ? <Starships ships={favorites} showNotes />
+        : <div>View the starships list to select favorites.</div>
+    }
   </div>
 }
