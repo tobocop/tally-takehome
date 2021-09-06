@@ -32,8 +32,14 @@ export const GetStarships = () => {
     <div className="wrap">
       <h1 className="title">Starship List</h1>
       <Starships ships={starshipsResponse.results} showNotes={false} />
-      <PaginationButton url={starshipsResponse.previous} onClick={setApiUrl} text="previous" />
-      <PaginationButton url={starshipsResponse.next} onClick={setApiUrl} text="next" />
+      <div className="pagination">
+        <div className="previousPage">
+          <PaginationButton url={starshipsResponse.previous} onClick={setApiUrl} text="Previous page" />
+        </div>
+        <div>
+          <PaginationButton url={starshipsResponse.next} onClick={setApiUrl} text="Next page" />
+        </div>
+      </div>
     </div>
   </div>
 }

@@ -18,6 +18,17 @@
       margin-bottom: space.of(8);
     }
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin: space.of(7) 0;
+    align-items: center;
+  }
+
+  .previousPage {
+    margin-right: space.of(3);
+  }
 }
 
 // TODO: probably pull this into its own component

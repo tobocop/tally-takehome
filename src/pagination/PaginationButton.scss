@@ -1,0 +1,15 @@
+@use "../assets/styles/space";
+
+.PaginationButton{
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+
+  button{
+    color: var(--white);
+    background-color: var(--dark-grey);
+    border: none;
+    padding: space.of(1);
+    border-radius: 2rem;
+    cursor: pointer;
+  }
+}
