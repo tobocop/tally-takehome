@@ -1,16 +1,35 @@
 @use "../assets/styles/space";
+@use "../assets/styles/breakpoints";
 
 .Starships {
   display: flex;
   flex-direction: column;
 
+  .starshipRow {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoints.tablet {
+      flex-direction: row;
+
+      + .starshipRow {
+        margin-top: space.of(4);
+      }
+    }
+  }
+
   .card {
     background-color: var(--dark-grey);
     border-radius: 1.5rem;
     padding: space.of(3);
+    flex: 1;
 
     + .card {
       margin-top: space.of(4);
+      @include breakpoints.tablet {
+        margin-top: unset;
+        margin-left: space.of(4);
+      }
     }
   }
 

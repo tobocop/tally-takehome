@@ -1,13 +1,22 @@
 @use "../assets/styles/space";
+@use "../assets/styles/breakpoints";
 
 .GetStarships {
 
   .wrap {
     margin: 0 space.of(4);
+
+    @include breakpoints.tablet {
+      margin: 0 space.of(12);
+    }
   }
 
   .title {
     margin-bottom: space.of(5);
+
+    @include breakpoints.tablet {
+      margin-bottom: space.of(8);
+    }
   }
 }
 

@@ -10,6 +10,11 @@ interface StarshipsProps {
   showNotes: boolean
 }
 
+const chunk = (arr: any[], size: number) =>
+  Array.from({length: Math.ceil(arr.length / size)}, (v, i) =>
+    arr.slice(i * size, i * size + size)
+  );
+
 export const Starships = ({ships, showNotes}: StarshipsProps) => {
   const [favorites, setFavorites] = useRecoilState(favoritesState)
 
@@ -22,36 +27,40 @@ export const Starships = ({ships, showNotes}: StarshipsProps) => {
   }
 
   return <div className="Starships">
-    {ships.map(ship =>
-      <div key={ship.url} className="card">
-        <div className="details">
-          <div className="specs">
-            <h2 className="name">{ship.name}</h2>
-            <p className="manufacturer">{ship.manufacturer}</p>
-            <div className="stars"><Stars count={ship.hyperdrive_rating} /></div>
-            <p>Passengers: {ship.passengers}</p>
-          </div>
-          <div className="picture">
-            <label className="customCheckbox">
-              <input
-                type="checkbox"
-                checked={favorites.find(f => f.url === ship.url) !== undefined}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => updateFavorites(ship, e.target.checked)}
+    {chunk(ships, 2).map((rowShips: Starship[], i) =>
+      <div key={i} className="starshipRow">
+        {rowShips.map((ship) =>
+          <div key={ship.url} className="card">
+            <div className="details">
+              <div className="specs">
+                <h2 className="name">{ship.name}</h2>
+                <p className="manufacturer">{ship.manufacturer}</p>
+                <div className="stars"><Stars count={ship.hyperdrive_rating} /></div>
+                <p>Passengers: {ship.passengers}</p>
+              </div>
+              <div className="picture">
+                <label className="customCheckbox">
+                  <input
+                    type="checkbox"
+                    checked={favorites.find(f => f.url === ship.url) !== undefined}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => updateFavorites(ship, e.target.checked)}
+                  />
+                  <i className="heart" aria-hidden={true} />
+                </label>
+              </div>
+            </div>
+            {
+              showNotes &&
+              <textarea
+                  value={ship.notes}
+                  onChange={(e) => updateFavorites({
+                    ...ship,
+                    notes: e.target.value
+                  }, true)}
               />
-              <i className="heart" aria-hidden={true} />
-            </label>
+            }
           </div>
-        </div>
-        {
-          showNotes &&
-          <textarea
-              value={ship.notes}
-              onChange={(e) => updateFavorites({
-                ...ship,
-                notes: e.target.value
-              }, true)}
-          />
-        }
+        )}
       </div>
     )}
   </div>
