@@ -9,12 +9,13 @@
     display: flex;
     flex-direction: column;
 
+    + .starshipRow {
+      margin-top: space.of(4);
+    }
+
     @include breakpoints.tablet {
       flex-direction: row;
 
-      + .starshipRow {
-        margin-top: space.of(4);
-      }
 
       &.half {
         width: 50%;

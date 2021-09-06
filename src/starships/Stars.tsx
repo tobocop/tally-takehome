@@ -1,3 +1,4 @@
+import React from "react";
 import star from "../assets/images/full_star.svg"
 import halfStar from "../assets/images/half_star.svg"
 import "./Stars.scss"
@@ -19,5 +20,5 @@ function renderStars(n: number) {
 
 export const Stars = ({count}: StarsProps) => {
   const number = parseFloat(count);
-  return <span className="Stars">{renderStars(number)}</span>
+  return !isNaN(number) ? <span className="Stars">{renderStars(number)}</span> : <React.Fragment />
 }
