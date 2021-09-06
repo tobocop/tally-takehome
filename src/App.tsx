@@ -4,13 +4,16 @@ import { GetStarships } from "./starships/GetStarships";
 import { FavoriteStarships } from "./starships/favorites/FavoriteStarships";
 import { RecoilRoot } from "recoil";
 import { Routes } from "./Routes";
+import "./App.scss"
 
 function App() {
   return (
     <RecoilRoot>
       <BrowserRouter>
-        <Route exact path={Routes.Starships} component={GetStarships} />
-        <Route exact path={Routes.Favorites} component={FavoriteStarships} />
+        <div className="App">
+          <Route exact path={Routes.Starships} component={GetStarships} />
+          <Route exact path={Routes.Favorites} component={FavoriteStarships} />
+        </div>
       </BrowserRouter>
     </RecoilRoot>
   );

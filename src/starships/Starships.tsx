@@ -23,7 +23,7 @@ export const Starships = ({ships, showNotes}: StarshipsProps) => {
 
   return <div className="Starships">
     {chunk(ships, 2).map((rowShips: Starship[], i) =>
-      <div key={i} className="starshipRow">
+      <div key={i} className={`starshipRow ${rowShips.length === 1 ? "half" : ""}`}>
         {rowShips.map((ship) =>
           <Ship
             ship={ship}

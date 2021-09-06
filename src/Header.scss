@@ -1,0 +1,14 @@
+@use "assets/styles/space";
+@use "assets/styles/breakpoints";
+
+.Header {
+  display: flex;
+  align-items: center;
+  .logoWrap {
+    flex: 1;
+    margin-left: space.of(-4);
+    @include breakpoints.tablet{
+      margin-left: space.of(-11);
+    }
+  }
+}

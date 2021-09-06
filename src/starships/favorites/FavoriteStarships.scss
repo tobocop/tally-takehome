@@ -1,0 +1,14 @@
+@use "../../assets/styles/space";
+@use "../../assets/styles/breakpoints";
+
+.FavoriteStarships {
+  margin-bottom: space.of(4);
+
+  .title {
+    margin-bottom: space.of(5);
+
+    @include breakpoints.tablet {
+      margin-bottom: space.of(8);
+    }
+  }
+}

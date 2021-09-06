@@ -1,0 +1,10 @@
+@use "assets/styles/space";
+@use "assets/styles/breakpoints";
+
+.App {
+  margin: space.of(2) space.of(4);
+
+  @include breakpoints.tablet {
+    margin: 0 space.of(12);
+  }
+}

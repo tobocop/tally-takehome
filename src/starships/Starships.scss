@@ -15,6 +15,10 @@
       + .starshipRow {
         margin-top: space.of(4);
       }
+
+      &.half {
+        width: 50%;
+      }
     }
   }
 
@@ -23,13 +27,23 @@
     border-radius: 1.5rem;
     padding: space.of(3);
     flex: 1;
+    margin-top: space.of(4);
 
-    + .card {
-      margin-top: space.of(4);
-      @include breakpoints.tablet {
-        margin-top: unset;
-        margin-left: space.of(4);
+    &:first-child {
+      margin-top: unset;
+    }
+
+    @include breakpoints.tablet {
+      margin-top: unset;
+      &:first-child {
+        margin-right: space.of(4);
       }
+    }
+  }
+
+  @include breakpoints.tablet {
+    .half .card {
+      margin-right: space.of(2);
     }
   }
 
