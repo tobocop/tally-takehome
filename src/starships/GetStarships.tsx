@@ -1,29 +1,38 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PaginationButton } from "../pagination/PaginationButton";
-import { StarshipsResponse } from "./Starship";
 import { Starships } from "./Starships";
 import { Link } from "react-router-dom"
 import { Routes } from "../Routes";
 import "./GetStarships.scss";
 import { Header } from "../Header";
+import { useRecoilValueLoadable } from "recoil";
+import { getStarshipsQuery } from "./getStarshipsQuery";
 
 export const GetStarships = () => {
   const [apiUrl, setApiUrl] = useState("https://swapi.dev/api/starships")
-  const [starshipsResponse, setStarshipsResponse] = useState<StarshipsResponse | null>(null);
-  const [isLoading, setIsLoading] = useState(false)
+  const starshipsResponseLoadable = useRecoilValueLoadable(getStarshipsQuery(apiUrl))
 
-  useEffect(() => {
-    setIsLoading(true)
-    fetch(apiUrl, {
-      method: "GET",
-      headers: {'Content-Type': 'application/json'}
-    }).then(r => r.json())
-      .then(body => setStarshipsResponse(body))
-      .finally(() => setIsLoading(false))
-  }, [apiUrl])
-
-  if (isLoading || starshipsResponse === null) {
-    return <div>Loading...</div>
+  const renderShips = () => {
+    const starshipsResponse = starshipsResponseLoadable.contents
+    switch (starshipsResponseLoadable.state) {
+      case "hasValue":
+        return <>
+          <Starships ships={starshipsResponse.results} showNotes={false} />
+          <div className="pagination">
+            <div className="previousPage">
+              <PaginationButton url={starshipsResponse.previous} onClick={setApiUrl} text="Previous page" />
+            </div>
+            <div>
+              <PaginationButton url={starshipsResponse.next} onClick={setApiUrl} text="Next page" />
+            </div>
+          </div>
+        </>;
+      case "loading":
+        return <div>Loading...</div>
+      case "hasError":
+        console.error(starshipsResponse)
+        return <div>Call to get starships has errored. Please try again later</div>
+    }
   }
 
   return <div className="GetStarships">
@@ -31,14 +40,6 @@ export const GetStarships = () => {
       <Link to={Routes.Favorites}>View Favorites</Link>
     </Header>
     <h1 className="title">Starship List</h1>
-    <Starships ships={starshipsResponse.results} showNotes={false} />
-    <div className="pagination">
-      <div className="previousPage">
-        <PaginationButton url={starshipsResponse.previous} onClick={setApiUrl} text="Previous page" />
-      </div>
-      <div>
-        <PaginationButton url={starshipsResponse.next} onClick={setApiUrl} text="Next page" />
-      </div>
-    </div>
+    {renderShips()}
   </div>
 }

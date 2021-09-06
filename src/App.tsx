@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
 import { GetStarships } from "./starships/GetStarships";
 import { FavoriteStarships } from "./starships/favorites/FavoriteStarships";

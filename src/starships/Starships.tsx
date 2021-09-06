@@ -26,6 +26,7 @@ export const Starships = ({ships, showNotes}: StarshipsProps) => {
       <div key={i} className={`starshipRow ${rowShips.length === 1 ? "half" : ""}`}>
         {rowShips.map((ship) =>
           <Ship
+            key={ship.url}
             ship={ship}
             favorite={favorites.find(f => f.url === ship.url) !== undefined}
             updateFavorites={updateFavorites}

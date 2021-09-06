@@ -14,7 +14,7 @@ function renderStars(n: number) {
   const stars = Array(n - decimal)
     .fill("")
     .map((_, i) => <img key={i} alt="full-star" src={star}/> );
-  return hasDecimal ? stars : [...stars, <img alt="half-star" src={halfStar}/>]
+  return hasDecimal ? stars : [...stars, <img key="last" alt="half-star" src={halfStar}/>]
 }
 
 export const Stars = ({count}: StarsProps) => {
