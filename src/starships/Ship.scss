@@ -2,6 +2,8 @@
 @use "../assets/styles/breakpoints";
 
 .Ship {
+  display: flex;
+  flex-direction: column;
   &.card {
     background-color: var(--dark-grey);
     border-radius: 1.5rem;
@@ -59,6 +61,14 @@
     padding: space.of(.5)
   }
 
+  .notes {
+    margin-top: space.of(2);
+    background-color: transparent;
+    border-radius: 1rem;
+    padding: space.of(1);
+    height: 11rem;
+    color: var(--white);
+  }
 
   // TODO: Pull into its own component
   .customCheckbox {

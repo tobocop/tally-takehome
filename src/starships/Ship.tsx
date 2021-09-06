@@ -33,6 +33,8 @@ export const Ship = ({ship, favorite, updateFavorites, showNotes}: StarshipProps
     {
       showNotes &&
       <textarea
+          placeholder="Add text"
+          className="notes"
           value={ship.notes}
           onChange={(e) => updateFavorites({
             ...ship,
