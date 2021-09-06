@@ -5,7 +5,7 @@ import "./Starships.scss";
 import { chunk } from "../chunk";
 import { Ship } from "./Ship";
 
-interface StarshipsProps {
+export interface StarshipsProps {
   ships: Starship[]
   showNotes: boolean
 }

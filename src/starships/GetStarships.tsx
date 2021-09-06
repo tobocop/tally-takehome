@@ -30,7 +30,6 @@ export const GetStarships = () => {
       case "loading":
         return <div>Loading...</div>
       case "hasError":
-        console.error(starshipsResponse)
         return <div>Call to get starships has errored. Please try again later</div>
     }
   }

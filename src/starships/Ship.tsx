@@ -11,7 +11,7 @@ interface StarshipProps {
 }
 
 export const Ship = ({ship, favorite, updateFavorites, showNotes}: StarshipProps) =>
-  <div key={ship.url} className="Ship card">
+  <div key={ship.url} className="Ship card" data-testid="ship">
     <div className="details">
       <div className="specs">
         <h2 className="name">{ship.name}</h2>
