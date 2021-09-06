@@ -32,11 +32,14 @@ export const Starships = ({ships, showNotes}: StarshipsProps) => {
             <p>Passengers: {ship.passengers}</p>
           </div>
           <div className="picture">
-            <input
-              type="checkbox"
-              checked={favorites.find(f => f.url === ship.url) !== undefined}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => updateFavorites(ship, e.target.checked)}
-            />
+            <label className="customCheckbox">
+              <input
+                type="checkbox"
+                checked={favorites.find(f => f.url === ship.url) !== undefined}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => updateFavorites(ship, e.target.checked)}
+              />
+              <i className="heart" aria-hidden={true} />
+            </label>
           </div>
         </div>
         {
